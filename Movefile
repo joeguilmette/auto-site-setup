@@ -1,6 +1,6 @@
 local:
   vhost: "http://project.dev"
-  wordpress_path: "/Users/joe/Code/vagrant-local/www/project/wp-core" # use an absolute path here
+  wordpress_path: "/vagrant/www/project/wp-core" # are you using `$ vagrant ssh`?
 
   database:
     name: "project_db"
@@ -10,12 +10,12 @@ local:
 
 staging: # this is going to have to be set up after the site is initialized on the server
   vhost: "http://project.joeguilmette.com"
-  wordpress_path: "/home/joeguilm/project" # use an absolute path here
+  wordpress_path: "/home/joeguilm/lashes" # use an absolute path here
 
   database:
-    name: "joeguilm_project"
-    user: "joeguilm_project"
-    password: "password"
+    name: "project_db"
+    user: "root"
+    password: "root"
     host: "localhost"
     # port: "3308" # Use just in case you have exotic server config
 
@@ -32,16 +32,16 @@ staging: # this is going to have to be set up after the site is initialized on t
 
   paths: # you can customize wordpress internal paths
     wp_content: "wp-content"
-  #   uploads: "wp-content/uploads"
-  #   plugins: "wp-content/plugins"
-  #   themes: "wp-content/themes"
-  #   languages: "wp-content/languages"
-  #   themes: "wp-content/themes"
+    uploads: "wp-content/uploads"
+    plugins: "wp-content/plugins"
+    themes: "wp-content/themes"
+    languages: "wp-content/languages"
+    themes: "wp-content/themes"
 
   ssh:
     host: "joeguilmette.com"
     user: "joeguilm"
-  #   password: "password" # password is optional, will use public keys if available.
+   password: ">3%weimvgp8MPjT*g8fe" # password is optional, will use public keys if available.
   #   port: 22 # Port is optional
     rsync_options: "--verbose" # Additional rsync options, optional
   #   gateway: # Gateway is optional
@@ -57,4 +57,3 @@ staging: # this is going to have to be set up after the site is initialized on t
 
 # production: # multiple environments can be specified
 #   [...]
-
