@@ -13,15 +13,20 @@ then
 	echo "Installing WordPress using WP CLI"
 	mkdir wp-core
 	cd wp-core
+	echo "Downloading WP Core"
 	wp core download 
+	echo "Creating wp-config.php"
 	wp core config --dbname="project_db" --dbuser=root --dbpass=root --dbhost="localhost" --dbprefix=wp_
+	echo "Installing WordPress"
 	wp core install --url=project.dev --title="Project" --admin_user=admin --admin_password=password --admin_email=demo@example.com
+	echo "Installing Plugins"
 	wp plugin install custom-field-suite
 	wp plugin install better-wp-security
 	wp plugin install updraftplus
 	wp plugin install wordpress-seo
 	wp plugin install wpremote
 	wp plugin install admin-menu-editor
+	echo "Goodbye Dolly"
 	wp plugin uninstall hello
 	wp plugin uninstall akismet
 	cd ..
