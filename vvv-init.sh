@@ -1,24 +1,32 @@
 # Init script for VVV Auto Bootstrap Demo 1
 
-echo "Commencing VVV Demo 1 Setup"
+echo "Commencing vvv-init.sh"
 
 # Make a database, if we don't already have one
 echo "Creating database (if it's not already there)"
-mysql -u root --password=root -e "CREATE DATABASE IF NOT EXISTS vvv_demo_1"
-mysql -u root --password=root -e "GRANT ALL PRIVILEGES ON vvv_demo_1.* TO wp@localhost IDENTIFIED BY 'wp';"
+mysql -u root --password=root -e "CREATE DATABASE IF NOT EXISTS project_db"
+mysql -u root --password=root -e "GRANT ALL PRIVILEGES ON project_db.* TO root@localhost IDENTIFIED BY 'root';"
 
 # Download WordPress
-if [ ! -d htdocs ]
+if [ ! -d wp-core ]
 then
 	echo "Installing WordPress using WP CLI"
-	mkdir htdocs
-	cd htdocs
+	mkdir wp-core
+	cd wp-core
 	wp core download 
-	wp core config --dbname="vvv_demo_1" --dbuser=wp --dbpass=wp --dbhost="localhost"
-	wp core install --url=vvv-demo-1.dev --title="VVV Bootstrap Demo 1" --admin_user=admin --admin_password=password --admin_email=demo@example.com
+	wp core config --dbname="project_db" --dbuser=root --dbpass=root --dbhost="localhost" --dbprefix=wp_
+	wp core install --url=project.dev --title="Project" --admin_user=admin --admin_password=password --admin_email=demo@example.com
+	wp plugin install custom-field-suite
+	wp plugin install better-wp-security
+	wp plugin install updraftplus
+	wp plugin install wordpress-seo
+	wp plugin install wpremote
+	wp plugin install admin-menu-editor
+	wp plugin uninstall hello
+	wp plugin uninstall akismet
 	cd ..
 fi
 
 # The Vagrant site setup script will restart Nginx for us
 
-echo "VVV Demo 1 site now installed";
+echo "Finished vvv-init.sh";
