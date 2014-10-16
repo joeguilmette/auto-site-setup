@@ -1,6 +1,6 @@
 local:
   vhost: "http://project.dev"
-  wordpress_path: "/vagrant/www/project/wp-core" # are you using `$ vagrant ssh`?
+  wordpress_path: "/vagrant/www/project/wp-core" # must execute Wordmove from `$ vagrant ssh`
 
   database:
     name: "project_db"
@@ -41,7 +41,13 @@ staging: # this is going to have to be set up after the site is initialized on t
   ssh:
     host: "joeguilmette.com"
     user: "joeguilm"
-   password: ">3%weimvgp8MPjT*g8fe" # password is optional, will use public keys if available.
+  #  password: "pswd" # password is optional, will use public keys if available.
+  
+  #  Due to an error with net-ssh, you must send public keys to your server before
+  #  running wordmove, otherwise the db will fail.
+  #  $ ssh-keygen -t rsa -C "email@example.com"
+  #  $ ssh-copy-id user@host.com
+  
   #   port: 22 # Port is optional
     rsync_options: "--verbose" # Additional rsync options, optional
   #   gateway: # Gateway is optional
