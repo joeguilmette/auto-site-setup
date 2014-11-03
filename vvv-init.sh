@@ -20,12 +20,18 @@ then
 	echo "Installing WordPress"
 	wp core install --url=project.dev --title="Project" --admin_user=admin --admin_password=password --admin_email=demo@example.com
 	echo "Installing Plugins"
-	wp plugin install custom-field-suite
-	wp plugin install better-wp-security
-	wp plugin install updraftplus
-	wp plugin install wordpress-seo
-	wp plugin install wpremote
-	wp plugin install admin-menu-editor
+	# EasyEngine plugins
+	wp plugin install --activate w3-total-cache
+	wp plugin install --activate nginx-helper
+	
+	#Probably will use on every site
+	wp plugin install --activate custom-field-suite
+	wp plugin install --activate better-wp-security
+	wp plugin install --activate updraftplus
+	wp plugin install --activate wordpress-seo
+	wp plugin install --activate wpremote
+	wp plugin install --activate admin-menu-editor
+    wp plugin install --activate ninja-forms
 	echo "Goodbye Dolly"
 	wp plugin uninstall hello
 	wp plugin uninstall akismet
