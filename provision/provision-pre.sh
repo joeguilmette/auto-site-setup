@@ -51,13 +51,3 @@ else
 	echo "compass not installed"
 	gem install compass --pre
 fi
-
-#compass-rgbapng install
-#currently only needed for MyLooks project
-compass-rgbapng_install="$(gem list compass-rgbapng -i)"
-if [ "$compass-rgbapng_install" = true ]; then
-  echo "compass-rgbapng installed"
-else
-  echo "compass-rgbapng not installed"
-  gem install compass-rgbapng
-fi
